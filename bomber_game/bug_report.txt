@@ -1,0 +1,62 @@
+Bug 1: The plane can't drop any more bombs after the previous bomb missed a building.#solved
+	
+-	The game runs well in the beginning but once the plane has missed a target, no more bombs can be dropped and so it leads to game over.
+
+-    Instead, after missing, there should be more bombs to be dropped in order for the game to work well and so that the user can progress through the game.
+
+-	To reproduce it, the building widths can be reduced so that it is easier for the bombs to miss the them.
+	
+-	The bug is caused by the bomb_falling boolean variable not resorting to false once the bomb misses the buildings. So tecnically, the bomb is still falling when it
+	doesn't hit anything and keeps falling even after exiting the canvas.
+
+ 
+
+Bug 2: Before game over, the 'r' key press exits the game like the 'q' key.#solved
+
+-	If the game is still running before game over and the player restarts the game, the game closes completely.
+
+-	Instead, it should reload the game with a new set of random building heights.
+
+-	Run the game and press the 'r' key immediately.
+
+-	The game exits because the program encounters an error while it is running, the canvas.delete() function uses the argument msg_text which is not previously defined
+	in the program.
+
+
+
+Bug 3: The bomber is never able to hit the right-most building and if the player tries to target it, the bombs don't drop anymore.#solved
+
+-	As the game starts, the plane starts from a point right above that building and immediately starts moving to the left, this makes bombing that building almost
+	impossible.
+
+-	The plane should ideally be in a position to easily bomb that building everytime it starts from the right.
+
+-	To reproduce it, start the game and immediately drop the bomb or drop it in the beginning of the next cycle.
+
+-	One reason this might be the case is the fact that building widths are initially very small and there are too many buildings to start with.
+
+
+
+Bug 4: The player can't progress to the next level.#solved
+
+-	When the player has leveled the buildings, the plane doesn't land and the prompt to go the next level is not shown
+
+-	Instead, once the plane reaches the ground, a pop-up should prompt to progress to the next level and stop the game for that time.
+
+-	Just level the buildings and wait for the plane to reach the ground.
+
+-	This happens since the y-coordinate of the plane initially has to be less than the canvas height to win the game, which doesn't make sense and therefore,
+	doesn't lead to progress.
+
+
+
+Bug 5: The bomb falls from the nose of the plane.#solved
+
+-	When the space bar is pressed, the bomb falls from the nose of the plane to the buildings.
+
+-	It should fall from the center of the plane if the game wants to simulate reality.
+
+-	Just press the space bar and look where the bomb falls from.
+
+-	This is caused by the x and y coordinates of the bomb being exactly same as that of the plane, and since that starts of the top left of the plane,
+	this is the result that is produced.	
